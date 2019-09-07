@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Visual Studio 2019 build output
+out/
+
 # User-specific files
 *.suo
 *.user
