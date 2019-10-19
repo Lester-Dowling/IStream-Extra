@@ -4,6 +4,7 @@
 #include <boost/test/test_case_template.hpp>
 #include <boost/mpl/list.hpp>
 #include "IStream-Extra/pair.hpp"
+#include "put-to-operators.hpp"
 
 BOOST_AUTO_TEST_SUITE(test_pair_suite, *boost::unit_test::enabled())
 
