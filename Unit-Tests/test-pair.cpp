@@ -6,7 +6,7 @@
 #include "IStream-Extra/pair.hpp"
 #include "put-to-operators.hpp"
 
-BOOST_AUTO_TEST_SUITE(test_pair_suite, *boost::unit_test::enabled())
+BOOST_AUTO_TEST_SUITE(test_pair_input_suite, *boost::unit_test::enabled())
 
 /*
  * Unit tests to verify the correct operation of pair input.
