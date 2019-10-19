@@ -14,7 +14,7 @@ BOOST_AUTO_TEST_SUITE(test_pair_suite, *boost::unit_test::enabled())
 typedef boost::mpl::list<int16_t, int32_t, float, double> signed_test_types;
 typedef boost::mpl::list<uint16_t, uint32_t> unsigned_test_types;
 typedef boost::mpl::list<int16_t, uint16_t, int32_t, uint32_t, float, double>
-  common_number_types;
+  common_number_test_types;
 typedef boost::mpl::list<char, unsigned char, signed char> char_test_types;
 typedef boost::mpl::list<float, double> real_test_types;
 

@@ -1,0 +1,56 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(Ubuntu) Run Unit Tests",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${command:cmake.launchTargetPath}",
+			"args": [
+				"--color_output",
+				"--report_level=short",
+				"--log_level=message"
+			],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [
+				{
+					"name": "FINISH_WITH_USER_PROMPT",
+					"value": "0" // Finish WITHOUT user prompt for externalConsole == false
+				}
+			],
+			"externalConsole": false, // Internal console is okay.
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "(Windows) Run Unit Tests",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"program": "${command:cmake.launchTargetPath}",
+			"args": [
+				"--color_output",
+				"--report_level=short",
+				"--log_level=message"
+			],
+			"environment": [
+				{
+					"name": "FINISH_WITH_USER_PROMPT",
+					"value": "1" // Finish WITH user prompt for externalConsole == true
+				}
+			],
+			"externalConsole": true
+		}
+	]
+}
