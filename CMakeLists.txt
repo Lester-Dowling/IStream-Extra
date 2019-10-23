@@ -4,7 +4,13 @@ project(
   VERSION 0.5.0
   DESCRIPTION "Overrides of operator>> for common structured types.")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(BOOST_REQUIRED_COMPONENTS boost)
+set(ENV{BOOST_REQUIRED_COMPONENTS} "boost")
+function(boost_add_component)
+  foreach(boost_component ${ARGV})
+    set(ENV{BOOST_REQUIRED_COMPONENTS}
+        "$ENV{BOOST_REQUIRED_COMPONENTS};${boost_component}")
+  endforeach(boost_component)
+endfunction()
 
 add_library(${PROJECT_NAME} INTERFACE)
 
@@ -29,12 +35,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   include(CTest)
   message(STATUS "Building unit tests: ${BUILD_TESTING}")
   if(BUILD_TESTING)
-    list(
-      APPEND BOOST_REQUIRED_COMPONENTS #
-             filesystem #
-             date_time #
-             regex #
-             unit_test_framework)
+    boost_add_component(filesystem date_time regex unit_test_framework)
   endif(BUILD_TESTING)
 endif()
 

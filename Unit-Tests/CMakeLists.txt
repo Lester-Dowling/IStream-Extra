@@ -75,7 +75,7 @@ endif()
 #
 add_subdirectory("boost")
 target_link_libraries(${TARGET} PRIVATE Boost::boost)
-foreach(Boost_Lib ${BOOST_REQUIRED_COMPONENTS})
+foreach(Boost_Lib $ENV{BOOST_REQUIRED_COMPONENTS})
   target_link_libraries(${TARGET} PRIVATE Boost::${Boost_Lib})
 endforeach(Boost_Lib)
 if(WIN32)
