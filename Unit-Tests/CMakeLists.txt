@@ -74,16 +74,10 @@ endif()
 # Boost
 #
 add_subdirectory("boost")
-target_link_libraries(
-  ${TARGET}
-  PRIVATE #
-          Boost::boost #
-          Boost::filesystem #
-          Boost::date_time #
-          Boost::program_options #
-          Boost::regex #
-          Boost::unit_test_framework #
-)
+target_link_libraries(${TARGET} PRIVATE Boost::boost)
+foreach(Boost_Lib ${BOOST_REQUIRED_COMPONENTS})
+  target_link_libraries(${TARGET} PRIVATE Boost::${Boost_Lib})
+endforeach(Boost_Lib)
 if(WIN32)
   add_custom_command(
     TARGET ${TARGET} PRE_BUILD
