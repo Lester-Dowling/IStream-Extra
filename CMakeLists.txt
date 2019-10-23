@@ -4,15 +4,6 @@ project(
   VERSION 0.5.0
   DESCRIPTION "Overrides of operator>> for common structured types.")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-if(NOT DEFINED ENV{BOOST_REQUIRED_COMPONENTS})
-  set(ENV{BOOST_REQUIRED_COMPONENTS} "boost")
-endif()
-function(boost_add_component)
-  foreach(boost_component ${ARGV})
-    set(ENV{BOOST_REQUIRED_COMPONENTS}
-        "$ENV{BOOST_REQUIRED_COMPONENTS};${boost_component}")
-  endforeach(boost_component)
-endfunction()
 
 add_library(${PROJECT_NAME} INTERFACE)
 
@@ -31,6 +22,19 @@ endforeach(pub_file)
 #
 target_include_directories(${PROJECT_NAME}
                            INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/public)
+
+#
+# Boost
+#
+if(NOT DEFINED ENV{BOOST_REQUIRED_COMPONENTS})
+  set(ENV{BOOST_REQUIRED_COMPONENTS} "boost")
+endif()
+function(boost_add_component)
+  foreach(boost_component ${ARGV})
+    set(ENV{BOOST_REQUIRED_COMPONENTS}
+        "$ENV{BOOST_REQUIRED_COMPONENTS};${boost_component}")
+  endforeach(boost_component)
+endfunction()
 
 # Build unit tests only if this project isn't a submodule in a super-project.
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
