@@ -4,7 +4,9 @@ project(
   VERSION 0.5.0
   DESCRIPTION "Overrides of operator>> for common structured types.")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(ENV{BOOST_REQUIRED_COMPONENTS} "boost")
+if(NOT DEFINED ENV{BOOST_REQUIRED_COMPONENTS})
+  set(ENV{BOOST_REQUIRED_COMPONENTS} "boost")
+endif()
 function(boost_add_component)
   foreach(boost_component ${ARGV})
     set(ENV{BOOST_REQUIRED_COMPONENTS}
