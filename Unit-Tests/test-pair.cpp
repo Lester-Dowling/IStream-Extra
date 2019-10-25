@@ -1,7 +1,6 @@
 // Unit-Tests/test-pair.cpp
 #include "pch-unit-tests.hpp"
 #include <boost/test/unit_test.hpp>
-#include <boost/test/test_case_template.hpp>
 #include <boost/mpl/list.hpp>
 #include "IStream-Extra/pair.hpp"
 #include "put-to-operators.hpp"
@@ -30,8 +29,7 @@ BOOST_AUTO_TEST_CASE(see_what_happens_when_std_parses_a_list_of_doubles)
 		doubles.exceptions(ios_base::badbit | ios_base::failbit);
 		vd.insert(
 		  vd.end(), istream_iterator<double>{ doubles }, std::istream_iterator<double>{});
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (doubles.fail()) {
 			// BOOST_TEST_MESSAGE("doubles has failbit set");
 		}
@@ -45,8 +43,7 @@ BOOST_AUTO_TEST_CASE(see_what_happens_when_std_parses_a_list_of_doubles)
 			// BOOST_TEST_MESSAGE("doubles has eofbit set");
 			BOOST_TEST(vd.size() == 5);
 			return;
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse doubles");
 	}
 	BOOST_REQUIRE(vd == expected_answer);
@@ -64,8 +61,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_signed_number_pairs, T, signed_test_types
 	try {
 		iss.exceptions(ios_base::badbit);
 		v.insert(v.end(), istream_iterator<Pair>{ iss }, istream_iterator<Pair>{});
-	}
-	catch (const ios_base::failure& e__) {
+	} catch (const ios_base::failure& e__) {
 		// The exception msg when EOF:
 		const string eof_description("basic_ios::clear"), exception_msg(e__.what());
 		// If this exception is not the result of EOF, then re-throw it:
@@ -88,8 +84,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_unsigned_numbers_pairs, T, unsigned_test_
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), istream_iterator<Pair>{ iss }, std::istream_iterator<Pair>{});
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -102,8 +97,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_unsigned_numbers_pairs, T, unsigned_test_
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 5);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -122,8 +116,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_char_pairs, T, char_test_types)
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -136,8 +129,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_char_pairs, T, char_test_types)
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 5);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -155,8 +147,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_real_number_pairs, T, real_test_types)
 	vector<Pair> v;
 	try {
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -169,8 +160,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(input_of_real_number_pairs, T, real_test_types)
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 3);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -191,8 +181,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -205,8 +194,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 3);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -229,8 +217,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -243,8 +230,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 3);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -267,8 +253,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -281,8 +266,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 3);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE(v == expected_answer);
@@ -301,8 +285,7 @@ BOOST_AUTO_TEST_CASE(input_of_strings_and_comment_pair)
 	try {
 		iss.exceptions(ios_base::badbit | ios_base::failbit);
 		v.insert(v.end(), std::istream_iterator<Pair>(iss), std::istream_iterator<Pair>());
-	}
-	catch (const std::ios_base::failure&) {
+	} catch (const std::ios_base::failure&) {
 		if (iss.fail()) {
 			// BOOST_TEST_MESSAGE("iss has failbit set");
 		}
@@ -315,12 +298,10 @@ BOOST_AUTO_TEST_CASE(input_of_strings_and_comment_pair)
 			// setting the eofbit.
 			// BOOST_TEST_MESSAGE("iss has eofbit set");
 			BOOST_TEST(v.size() == 3);
-		}
-		else
+		} else
 			BOOST_FAIL("Failed to parse pairs in istringstream");
 	}
 	BOOST_REQUIRE_EQUAL(v, expected_answer);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END();
